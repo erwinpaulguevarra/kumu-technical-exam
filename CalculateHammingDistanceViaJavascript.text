@@ -1,0 +1,12 @@
+Formula: (x XOR y) then count the total number of 1s in the resultant string
+
+
+function getHammingDistance(x, y){
+    let xor_result = x ^ y; //use XOR operation
+
+    let binary_result = (xor_result).toString(2); //convert xor_result to binary
+
+    var distance = (binary_result.match(/1/g) || []).length; //count the total number of 1s in the binary_result
+
+    return distance;
+}

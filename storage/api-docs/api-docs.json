@@ -1,0 +1,209 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Create PHP API project that has an API endpoint that takes a list of github usernames (up to a maximum of 10 names) and returns to the user a list of basic information.",
+        "version": "1.0",
+        "title": "Kumu Technical Exam API"
+    },
+    "host": "kumu-technical-exam.herokuapp.com",
+    "basePath": "/api/v1",
+    "schemes": [
+        "https"
+    ],
+    "paths": {
+        "/auth/register": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Register",
+                "description": "",
+                "operationId": "createUser",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/RegisterRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/RegisterAndLoginResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Login",
+                "description": "",
+                "operationId": "",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/LoginRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/RegisterAndLoginResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/git/users": {
+            "get": {
+                "tags": [
+                    "Git"
+                ],
+                "summary": "Get the information of multiple user.",
+                "description": "",
+                "operationId": "",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/GitUsersRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GitUsersResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "RegisterRequest": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string",
+                    "format": "email"
+                },
+                "password": {
+                    "type": "string"
+                }
+            },
+            "xml": {
+                "name": "Register"
+            }
+        },
+        "LoginRequest": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "format": "email"
+                },
+                "password": {
+                    "type": "string"
+                }
+            },
+            "xml": {
+                "name": "LoginRequest"
+            }
+        },
+        "GitUsersRequest": {
+            "type": "object",
+            "properties": {
+                "usernames": {
+                    "type": "object",
+                    "example": [
+                        "user1",
+                        "user2",
+                        "user3"
+                    ]
+                }
+            },
+            "xml": {
+                "name": "LoginRequest"
+            }
+        },
+        "RegisterAndLoginResponse": {
+            "type": "object",
+            "properties": {
+                "access_token": {
+                    "type": "string",
+                    "example": "2|EGul2xvXjY5830MbdgdfDw0TUaseL3HGsFeMTiHh"
+                },
+                "token_type": {
+                    "type": "string",
+                    "example": "Bearer"
+                }
+            }
+        },
+        "GitUsersResponse": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "object",
+                    "example": [
+                        {
+                            "name": null,
+                            "login": "user1",
+                            "company": null,
+                            "followers": 1,
+                            "public_repositories": 1,
+                            "avg_followers_per_repo": 1
+                        },
+                        {
+                            "name": null,
+                            "login": "user2",
+                            "company": null,
+                            "followers": 0,
+                            "public_repositories": 0,
+                            "avg_followers_per_repo": 0
+                        },
+                        {
+                            "name": null,
+                            "login": "user3",
+                            "company": null,
+                            "followers": 1,
+                            "public_repositories": 0,
+                            "avg_followers_per_repo": 0
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}
