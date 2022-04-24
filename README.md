@@ -3,3 +3,6 @@ http://kumu-technical-exam.herokuapp.com/api/documentation
 
 Note:
 Always add "Accept"=>"application/json" on headers
+
+
+CalculateHammingDistanceViaJavascript.text
