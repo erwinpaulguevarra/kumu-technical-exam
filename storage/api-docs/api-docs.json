@@ -20,7 +20,7 @@
                 "operationId": "createUser",
                 "requestBody": {
                     "content": {
-                        "*/*": {
+                        "application/json": {
                             "schema": {
                                 "$ref": "#/components/schemas/RegisterRequest"
                             }
@@ -52,7 +52,7 @@
                 "operationId": "",
                 "requestBody": {
                     "content": {
-                        "*/*": {
+                        "application/json": {
                             "schema": {
                                 "$ref": "#/components/schemas/LoginRequest"
                             }
@@ -133,9 +133,6 @@
                     "password": {
                         "type": "string"
                     }
-                },
-                "xml": {
-                    "name": "Register"
                 }
             },
             "LoginRequest": {
@@ -148,9 +145,6 @@
                     "password": {
                         "type": "string"
                     }
-                },
-                "xml": {
-                    "name": "LoginRequest"
                 }
             },
             "GitUsersRequest": {
@@ -166,9 +160,6 @@
                         ]
                     }
                 },
-                "xml": {
-                    "name": "LoginRequest"
-                }
             },
             "RegisterAndLoginResponse": {
                 "type": "object",
