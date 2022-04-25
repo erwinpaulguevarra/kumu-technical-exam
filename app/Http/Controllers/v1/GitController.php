@@ -30,7 +30,10 @@ class GitController extends Controller
             $user_data_array = [];
             $usernames = Arr::sort($request->get('usernames')); //sort array alphabetically
             foreach($usernames as $username):
-                array_push($user_data_array, $this->getOrAddGitResultFromCache($username));
+                $user = $this->getOrAddGitResultFromCache($username);
+                if($user):
+                    array_push($user_data_array, $user);
+                endif;
             endforeach;
 
             return response()->json([
